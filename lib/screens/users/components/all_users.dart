@@ -9,10 +9,14 @@ import '../update_user.dart';
 class AllUsers extends StatelessWidget {
   final FirestoreService _firestoreService = FirestoreService();
 
+  AllUsers(this.type);
+
+  String? type;
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<UserModel>>(
-      future: _firestoreService.getUsersData(),
+      future: _firestoreService.getUsersData("type", type),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return CircularProgressIndicator(color: primaryColor);

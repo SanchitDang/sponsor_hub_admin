@@ -33,7 +33,7 @@ List demoData = [
     color: primaryColor,
   ),
   PanelData(
-    title: "Transaction",
+    title: "Transactions",
     svgSrc: "assets/icons/one_drive.svg",
     total: "8",
     color: Color(0xFFFFA113),

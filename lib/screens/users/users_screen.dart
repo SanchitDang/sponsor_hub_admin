@@ -11,6 +11,10 @@ import '../main/components/side_menu.dart';
 
 class UsersScreen extends StatelessWidget {
 
+  UsersScreen(this.type);
+
+  String? type;
+
   @override
   Widget build(BuildContext context) {
     final MenuAppController menuAppController = Get.find<MenuAppController>();
@@ -36,7 +40,7 @@ class UsersScreen extends StatelessWidget {
                     children: [
                       Header(),
                       SizedBox(height: defaultPadding),
-                      AllUsers(),
+                      AllUsers(type),
                     ],
                   ),
                 ),

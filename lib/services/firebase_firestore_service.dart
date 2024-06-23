@@ -7,9 +7,9 @@ import '../models/user_model.dart';
 class FirestoreService {
   final CollectionReference usersCollection = FirebaseFirestore.instance.collection('users');
 
-  Future<List<UserModel>> getUsersData() async {
+  Future<List<UserModel>> getUsersData(String fieldName, dynamic fieldValue) async {
     try {
-      QuerySnapshot usersSnapshot = await usersCollection.get();
+      QuerySnapshot usersSnapshot = await usersCollection.where(fieldName, isEqualTo: fieldValue).get();
       List<UserModel> userList = usersSnapshot.docs.map((userDoc) {
         return UserModel.fromMap(userDoc.data() as Map<String, dynamic>);
       }).toList();

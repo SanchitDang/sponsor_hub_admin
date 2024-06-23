@@ -39,7 +39,21 @@ class SideMenu extends StatelessWidget {
                 context,
                 PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>
-                      UsersScreen(),
+                      UsersScreen("User"),
+                  transitionDuration: Duration.zero,
+                ),
+              );
+            },
+          ),
+          DrawerListTile(
+            title: "Influencers",
+            svgSrc: "assets/icons/menu_profile.svg",
+            press: () {
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      UsersScreen("Influencer"),
                   transitionDuration: Duration.zero,
                 ),
               );
