@@ -7,8 +7,8 @@ import '../../../widgets/button.dart';
 import '../../../widgets/icon_button.dart';
 import 'file_info_card.dart';
 
-class MyFiles extends StatelessWidget {
-  const MyFiles({
+class PanelData extends StatelessWidget {
+  const PanelData({
     Key? key,
   }) : super(key: key);
 
@@ -21,14 +21,14 @@ class MyFiles extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "My Files",
+              "Panel Data",
               style: Theme.of(context).textTheme.titleMedium,
             ),
-            MyIconButton(
-              onPressed: () {},
-              label: "Add New",
-              icon: Icons.add,
-            ),
+            // MyIconButton(
+            //   onPressed: () {},
+            //   label: "Add New",
+            //   icon: Icons.add,
+            // ),
             // MyButton(onTap: () {}, text: "Update Profile"),
           ],
         ),
@@ -63,14 +63,14 @@ class FileInfoCardGridView extends StatelessWidget {
     return GridView.builder(
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: demoMyFiles.length,
+      itemCount: demoData.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
         crossAxisSpacing: defaultPadding,
         mainAxisSpacing: defaultPadding,
         childAspectRatio: childAspectRatio,
       ),
-      itemBuilder: (context, index) => FileInfoCard(info: demoMyFiles[index]),
+      itemBuilder: (context, index) => PanelInfoCard(info: demoData[index]),
     );
   }
 }

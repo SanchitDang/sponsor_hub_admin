@@ -27,10 +27,10 @@ class Header extends StatelessWidget {
             "Dashboard",
             style: Theme.of(context).textTheme.titleLarge,
           ),
-        if (!Responsive.isMobile(context))
-          Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
-        Expanded(child: SearchField()),
-        ProfileCard()
+        // if (!Responsive.isMobile(context))
+        //   Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
+        // Expanded(child: SearchField()),
+        // ProfileCard()
       ],
     );
   }

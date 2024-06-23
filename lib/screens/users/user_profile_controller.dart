@@ -9,7 +9,7 @@ class UserProfileController extends GetxController {
   final RxString riderId = ''.obs;
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController mobileController = TextEditingController();
+  final TextEditingController socialMediaLinkController = TextEditingController();
   final TextEditingController cityController = TextEditingController();
   final RxBool obscurePassword = true.obs;
 
@@ -18,7 +18,7 @@ class UserProfileController extends GetxController {
     // Dispose the TextEditingController when the controller is closed to prevent memory leaks
     nameController.dispose();
     emailController.dispose();
-    mobileController.dispose();
+    socialMediaLinkController.dispose();
     cityController.dispose();
     super.onClose();
   }
@@ -32,7 +32,7 @@ class UserProfileController extends GetxController {
   }) {
     nameController.text = name;
     emailController.text = email;
-    mobileController.text = mobile;
+    socialMediaLinkController.text = mobile;
     cityController.text = city;
   }
 
@@ -46,7 +46,7 @@ class UserProfileController extends GetxController {
       riderId.value,
       nameController.text,
       emailController.text,
-      mobileController.text,
+      socialMediaLinkController.text,
       cityController.text,
     );
   }
@@ -58,10 +58,11 @@ class UserProfileController extends GetxController {
 
   // Method to set data from userData to respective TextEditingController
   void setDataFromUserModel(UserModel userModel) {
+    profileUrl.value = userModel.profilePic ?? "";
     riderId.value = userModel.id ?? "";
     nameController.text = userModel.name ?? "";
     emailController.text = userModel.email ?? "";
-    mobileController.text = userModel.socialMediaLink ?? "";
+    socialMediaLinkController.text = userModel.socialMediaLink ?? "";
     cityController.text = userModel.location ?? "";
   }
 }

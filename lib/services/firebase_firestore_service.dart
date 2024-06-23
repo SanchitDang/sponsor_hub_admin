@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import '../models/user_model.dart';
 
 class FirestoreService {
-  Future<List<UserModel>> getUsersData() async {
-    final CollectionReference usersCollection = FirebaseFirestore.instance.collection('users');
+  final CollectionReference usersCollection = FirebaseFirestore.instance.collection('users');
 
+  Future<List<UserModel>> getUsersData() async {
     try {
       QuerySnapshot usersSnapshot = await usersCollection.get();
       List<UserModel> userList = usersSnapshot.docs.map((userDoc) {
@@ -18,7 +18,17 @@ class FirestoreService {
       return userList;
     } catch (e) {
       print('Error fetching users data: $e');
-      throw e; // Rethrow the exception for handling in UI or logging
+      throw e;
+    }
+  }
+
+  Future<List<UserModel>> getRecentUsers(int limit) async {
+    try {
+      QuerySnapshot querySnapshot = await usersCollection.limit(limit).get();
+      return querySnapshot.docs.map((doc) => UserModel.fromMap(doc.data() as Map<String, dynamic>)).toList();
+    } catch (e) {
+      print('Error fetching recent users: $e');
+      throw e;
     }
   }
 
