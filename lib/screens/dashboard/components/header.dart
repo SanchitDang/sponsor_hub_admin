@@ -2,7 +2,7 @@ import 'package:admin/controllers/MenuAppController.dart';
 import 'package:admin/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 import '../../../constants.dart';
 
@@ -13,12 +13,14 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MenuAppController menuAppController = Get.find<MenuAppController>();
+
     return Row(
       children: [
         if (!Responsive.isDesktop(context))
           IconButton(
             icon: Icon(Icons.menu),
-            onPressed: context.read<MenuAppController>().controlMenu,
+            onPressed: menuAppController.controlMenu,
           ),
         if (!Responsive.isMobile(context))
           Text(

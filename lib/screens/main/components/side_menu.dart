@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../users/users_screen.dart';
+import '../main_screen.dart';
+
 class SideMenu extends StatelessWidget {
   const SideMenu({
     Key? key,
@@ -17,41 +20,39 @@ class SideMenu extends StatelessWidget {
           DrawerListTile(
             title: "Dashboard",
             svgSrc: "assets/icons/menu_dashboard.svg",
-            press: () {},
+            press: () {
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      MainScreen(),
+                  transitionDuration: Duration.zero,
+                ),
+              );
+            },
           ),
           DrawerListTile(
-            title: "Transaction",
-            svgSrc: "assets/icons/menu_tran.svg",
-            press: () {},
+            title: "Users",
+            svgSrc: "assets/icons/menu_profile.svg",
+            press: () {
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      UsersScreen(),
+                  transitionDuration: Duration.zero,
+                ),
+              );
+            },
           ),
           DrawerListTile(
-            title: "Task",
+            title: "Consulting",
             svgSrc: "assets/icons/menu_task.svg",
             press: () {},
           ),
           DrawerListTile(
-            title: "Documents",
-            svgSrc: "assets/icons/menu_doc.svg",
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Store",
-            svgSrc: "assets/icons/menu_store.svg",
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Notification",
-            svgSrc: "assets/icons/menu_notification.svg",
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Profile",
-            svgSrc: "assets/icons/menu_profile.svg",
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Settings",
-            svgSrc: "assets/icons/menu_setting.svg",
+            title: "Transactions",
+            svgSrc: "assets/icons/menu_tran.svg",
             press: () {},
           ),
         ],

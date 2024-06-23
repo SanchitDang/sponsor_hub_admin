@@ -2,15 +2,18 @@ import 'package:admin/controllers/MenuAppController.dart';
 import 'package:admin/responsive.dart';
 import 'package:admin/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 import 'components/side_menu.dart';
 
 class MainScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+    final MenuAppController menuAppController = Get.find<MenuAppController>();
+
     return Scaffold(
-      key: context.read<MenuAppController>().scaffoldKey,
+      key: menuAppController.scaffoldKey,
       drawer: SideMenu(),
       body: SafeArea(
         child: Row(
