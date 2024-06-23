@@ -1,3 +1,5 @@
+import 'package:admin/screens/consulting/consult_screen.dart';
+import 'package:admin/screens/transactions/transactions_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -62,12 +64,30 @@ class SideMenu extends StatelessWidget {
           DrawerListTile(
             title: "Consulting",
             svgSrc: "assets/icons/menu_task.svg",
-            press: () {},
+            press: () {
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      ConsultScreen(),
+                  transitionDuration: Duration.zero,
+                ),
+              );
+            },
           ),
           DrawerListTile(
             title: "Transactions",
             svgSrc: "assets/icons/menu_tran.svg",
-            press: () {},
+            press: () {
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      TransactionsScreen(),
+                  transitionDuration: Duration.zero,
+                ),
+              );
+            },
           ),
         ],
       ),

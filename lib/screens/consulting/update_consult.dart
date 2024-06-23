@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'consult_controller.dart';
 
-import 'user_profile_controller.dart';
-
-class UpdateUserProfileScreen extends StatelessWidget {
-  const UpdateUserProfileScreen({Key? key}) : super(key: key);
+class UpdateConsultScreen extends StatelessWidget {
+  const UpdateConsultScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final profileController = Get.put(UserProfileController());
+    final consultController = Get.put(ConsultController());
 
     return Scaffold(
       appBar: AppBar(
@@ -19,7 +18,7 @@ class UpdateUserProfileScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          "Profile",
+          "Consult",
           style: TextStyle(
               color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         ),
@@ -34,55 +33,52 @@ class UpdateUserProfileScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 20),
 
-                // -- IMAGE with ICON
-                SizedBox(
-                    width: 120,
-                    height: 120,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: Image(
-                        image: (profileController.profileUrl.value.isNotEmpty &&
-                                profileController.profileUrl.value !=
-                                    "profilePicURL")
-                            ? NetworkImage(profileController.profileUrl.value)
-                            : const NetworkImage(
-                                "https://firebasestorage.googleapis.com/v0/b/sponsor-hub-dnm.appspot.com/o/user_image%2Fuser.jpg?alt=media&token=de49dd69-ce8c-44f9-8a1f-10a09816b1b7"),
-                      ),
-                    )),
-                const SizedBox(height: 50),
-
                 // -- Form Fields
                 Form(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       TextFormField(
-                        controller: profileController.nameController,
+                        controller: consultController.nameController,
                         decoration: const InputDecoration(
                             label: Text("Full Name"),
                             prefixIcon: Icon(Icons.person)),
                       ),
                       const SizedBox(height: 20),
                       TextFormField(
-                        controller: profileController.emailController,
+                        controller: consultController.emailController,
                         decoration: const InputDecoration(
                             label: Text("Email"),
                             prefixIcon: Icon(Icons.email)),
                       ),
                       const SizedBox(height: 20),
                       TextFormField(
-                        controller: profileController.socialMediaLinkController,
+                        controller: consultController.phoneNumberController,
                         decoration: const InputDecoration(
-                            label: Text("Social Media Link"),
-                            prefixIcon: Icon(Icons.link)),
+                            label: Text("Phone Number"),
+                            prefixIcon: Icon(Icons.phone)),
                       ),
                       const SizedBox(height: 20),
                       TextFormField(
-                        controller: profileController.locationController,
+                        controller: consultController.addressController,
                         decoration: InputDecoration(
-                          label: const Text("City"),
+                          label: const Text("Address"),
                           prefixIcon: const Icon(Icons.location_history),
                         ),
+                      ),
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        controller: consultController.noteController,
+                        decoration: const InputDecoration(
+                            label: Text("Note"),
+                            prefixIcon: Icon(Icons.note)),
+                      ),
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        controller: consultController.sponsorshipTypeController,
+                        decoration: const InputDecoration(
+                            label: Text("Sponsorship Type"),
+                            prefixIcon: Icon(Icons.business)),
                       ),
                       const SizedBox(height: 20),
 
@@ -91,14 +87,13 @@ class UpdateUserProfileScreen extends StatelessWidget {
                       //   width: MediaQuery.of(context).size.width * 0.30,
                       //   height: 50,
                       //   child: ElevatedButton(
-                      //     onPressed: () =>
-                      //         profileController.submitProfileUpdate(),
+                      //     onPressed: () => consultController.submitConsultUpdate(),
                       //     style: ElevatedButton.styleFrom(
                       //         backgroundColor: primaryColor,
                       //         side: BorderSide.none,
                       //         shape: const StadiumBorder()),
                       //     child: const Text("Update",
-                      //         style: TextStyle(color: secondaryColor, fontWeight: FontWeight.bold)),
+                      //         style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                       //   ),
                       // ),
                       // const SizedBox(height: 20),
