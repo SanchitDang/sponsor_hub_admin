@@ -80,8 +80,8 @@ class UserProfileController extends GetxController {
   }
 
   // Method to delete the profile
-  void deleteProfile() {
-    // Add logic here to delete the profile
+  Future<void> deleteProfile(String id) async {
+    FirestoreService().deleteUserProfile(id);
   }
 
   // Method to set data from userData to respective TextEditingController

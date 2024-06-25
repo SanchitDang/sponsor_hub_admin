@@ -6,17 +6,23 @@ import '../../../services/firebase_firestore_service.dart';
 import '../user_profile_controller.dart';
 import '../update_user.dart';
 
-class AllUsers extends StatelessWidget {
-  final FirestoreService _firestoreService = FirestoreService();
+class AllUsers extends StatefulWidget {
 
   AllUsers(this.type);
 
   String? type;
 
   @override
+  State<AllUsers> createState() => _AllUsersState();
+}
+
+class _AllUsersState extends State<AllUsers> {
+  final FirestoreService _firestoreService = FirestoreService();
+
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<UserModel>>(
-      future: _firestoreService.getUsersData("type", type),
+      future: _firestoreService.getUsersData("type", widget.type),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator(color: primaryColor));
@@ -64,12 +70,11 @@ class AllUsers extends StatelessWidget {
                                 onPressed: () {
                                   UserProfileController profileController = Get.put(UserProfileController());
                                   profileController.setDataFromUserModel(user);
-
                                   Navigator.push(
                                     context,
                                     PageRouteBuilder(
                                       pageBuilder: (context, animation, secondaryAnimation) =>
-                                          UpdateUserProfileScreen(),
+                                          UpdateUserProfileScreen(widget.type),
                                     ),
                                   );
                                 },
@@ -78,6 +83,22 @@ class AllUsers extends StatelessWidget {
                                   minimumSize: Size(Get.width * 0.1, Get.height * 0.05),
                                 ),
                                 child: Text("VIEW", style: const TextStyle(
+                                    color: Colors.black, fontWeight: FontWeight.bold),),
+                              ),
+                              SizedBox(width:10),
+
+                              ElevatedButton(
+                                onPressed: () async {
+                                  UserProfileController profileController = Get.put(UserProfileController());
+                                  profileController.setDataFromUserModel(user);
+                                  await profileController.deleteProfile(user.id!);
+                                  setState(() {});
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: primaryColor,
+                                  minimumSize: Size(Get.width * 0.1, Get.height * 0.05),
+                                ),
+                                child: Text("DELETE", style: const TextStyle(
                                     color: Colors.black, fontWeight: FontWeight.bold),),
                               ),
                             ],

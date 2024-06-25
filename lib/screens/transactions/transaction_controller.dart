@@ -65,6 +65,7 @@ class TransactionController extends GetxController {
         'phoneNumber': phoneNumberController.text,
         'sponsorshipType': sponsorshipTypeController.text,
         'userId': "userIdController.value",
+        'transactionId': DateTime.now().microsecondsSinceEpoch.toString(),
         'timestamp': Timestamp.now(),
       };
 

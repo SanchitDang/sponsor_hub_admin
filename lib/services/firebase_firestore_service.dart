@@ -67,6 +67,30 @@ class FirestoreService {
     }
   }
 
+  Future<void> deleteUserProfile(String userId) async {
+    try {
+      await usersCollection.doc(userId).delete();
+      Get.snackbar(
+        'Success',
+        'User deleted successfully!',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+      print("User profile deleted successfully");
+    } catch (e) {
+      Get.snackbar(
+        'Error',
+        'Failed to delete user: $e',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+      print("Error deleting user profile: $e");
+      throw e;
+    }
+  }
+
   Future<List<ConsultModel>> getConsultData() async {
     try {
       QuerySnapshot consultSnapshot = await consultCollection.get();

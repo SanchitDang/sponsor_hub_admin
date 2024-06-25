@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'user_profile_controller.dart';
 
 class UpdateUserProfileScreen extends StatelessWidget {
-  const UpdateUserProfileScreen({Key? key}) : super(key: key);
+  UpdateUserProfileScreen(this.type, {Key? key}) : super(key: key);
+
+  String? type;
 
   @override
   Widget build(BuildContext context) {
