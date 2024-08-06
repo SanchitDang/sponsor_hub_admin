@@ -9,6 +9,7 @@ class UserProfileController extends GetxController {
   final RxString userId = ''.obs;
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
   final TextEditingController typeController = TextEditingController();
   final TextEditingController ageController = TextEditingController();
   final TextEditingController locationController = TextEditingController();
@@ -23,6 +24,7 @@ class UserProfileController extends GetxController {
     // Dispose the TextEditingController when the controller is closed to prevent memory leaks
     nameController.dispose();
     emailController.dispose();
+    phoneController.dispose();
     typeController.dispose();
     ageController.dispose();
     locationController.dispose();
@@ -37,6 +39,7 @@ class UserProfileController extends GetxController {
   void updateProfileData({
     required String name,
     required String email,
+    required String phone,
     required String type,
     required String age,
     required String location,
@@ -47,6 +50,7 @@ class UserProfileController extends GetxController {
   }) {
     nameController.text = name;
     emailController.text = email;
+    phoneController.text = phone;
     typeController.text = type;
     ageController.text = age;
     locationController.text = location;
@@ -67,6 +71,7 @@ class UserProfileController extends GetxController {
       {
         'name': nameController.text,
         'email': emailController.text,
+        'phone': phoneController.text,
         'type': typeController.text,
         'age': ageController.text,
         'location': locationController.text,
@@ -90,6 +95,7 @@ class UserProfileController extends GetxController {
     userId.value = userModel.id ?? "";
     nameController.text = userModel.name ?? "";
     emailController.text = userModel.email ?? "";
+    phoneController.text = userModel.phone ?? "";
     typeController.text = userModel.type ?? "";
     ageController.text = userModel.age ?? "";
     locationController.text = userModel.location ?? "";

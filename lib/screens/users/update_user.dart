@@ -73,6 +73,13 @@ class UpdateUserProfileScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       TextFormField(
+                        controller: profileController.phoneController,
+                        decoration: const InputDecoration(
+                            label: Text("Phone"),
+                            prefixIcon: Icon(Icons.call)),
+                      ),
+                      const SizedBox(height: 20),
+                      TextFormField(
                         controller: profileController.socialMediaLinkController,
                         decoration: const InputDecoration(
                             label: Text("Social Media Link"),

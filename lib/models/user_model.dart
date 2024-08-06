@@ -2,6 +2,7 @@ class UserModel {
   final String? id;
   final String? name;
   final String? email;
+  final String? phone;
   final String? type;
   final String? profilePic;
   final String? age;
@@ -15,6 +16,7 @@ class UserModel {
     required this.id,
     required this.name,
     required this.email,
+    required this.phone,
     required this.type,
     required this.profilePic,
     required this.age,
@@ -30,6 +32,7 @@ class UserModel {
       'id': id,
       'name': name,
       'email': email,
+      'phone': phone,
       'type': type,
       'profilePic': profilePic,
       "age": age,
@@ -46,6 +49,7 @@ class UserModel {
       id: map['uid'],
       name: map['fullName'],
       email: map['email'],
+      phone: map['phone'],
       type: map['type'],
       profilePic: map['profilePic'],
       age: map['age'],
